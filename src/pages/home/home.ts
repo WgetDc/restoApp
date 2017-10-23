@@ -12,4 +12,8 @@ constructor(public navCtrl: NavController, public servicioMenus: ServicioMenus )
   this.menus = servicioMenus.getMenus();
   }
 
+  public goToPageCrear(){
+    this.navCtrl.push('CrearPage');
+  }
+
 }

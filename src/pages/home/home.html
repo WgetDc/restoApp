@@ -1,12 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>
-      Ionic Blank
+      Menu del día
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-fab top right edge>
+    <button (click)="goToPageCrear()" color="danger" ion-fab mini><ion-icon name="md-restaurant"></ion-icon></button>
+  </ion-fab>
   
   <ion-list>
     <ion-item *ngFor="let menu of menus">

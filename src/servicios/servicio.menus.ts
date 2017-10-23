@@ -12,4 +12,8 @@ export class ServicioMenus{
     public getMenus(){
         return this.menus;
     }
+
+    public createMenu(menu){
+        this.menus.push(menu);
+    }
 }
