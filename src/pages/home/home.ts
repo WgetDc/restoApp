@@ -16,4 +16,8 @@ constructor(public navCtrl: NavController, public servicioMenus: ServicioMenus )
     this.navCtrl.push('CrearPage');
   }
 
+  public goToPageDetalle(identificador){
+    this.navCtrl.push('DetallePage', { id: identificador } );
+  }
+
 }

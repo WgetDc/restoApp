@@ -16,4 +16,11 @@ export class ServicioMenus{
     public createMenu(menu){
         this.menus.push(menu);
     }
+
+    public getMenu(id){
+        return this.menus.filter(function(e,i){
+            return e.id == id
+        })[0] || { id: null, nombre:null, cantidad: null, precio: null, descripcion:null, img:null};
+    }
+
 }

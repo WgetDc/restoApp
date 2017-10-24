@@ -19,7 +19,7 @@
       </ion-thumbnail>
       <h2>{{menu.nombre}}</h2>
       <p>{{menu.precio}}</p>
-      <button ion-button block>View</button>
+      <button (click)="goToPageDetalle(menu.id)" ion-button block>Conocer el plato</button>
     </ion-item>
   </ion-list>
 
