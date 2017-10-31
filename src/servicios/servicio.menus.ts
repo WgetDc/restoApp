@@ -23,4 +23,14 @@ export class ServicioMenus{
         })[0] || { id: null, nombre:null, cantidad: null, precio: null, descripcion:null, img:null};
     }
 
+    public deleteMenu(menu){
+        let index = this.menus.indexOf(menu);
+        this.menus.splice(index,1);
+    }
+
+    public editMenu(menu){
+        let index = this.menus.indexOf(menu);
+        this.menus[index] = menu;
+    }
+
 }

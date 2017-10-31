@@ -6,25 +6,65 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>detalle</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>{{menu.nombre}}</ion-title>     
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<ion-card>
-  <ion-card-header>
-   {{menu.nombre}}
-  </ion-card-header>
+
+  <ion-list *ngIf="edit == true">
+
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input [(ngModel)]="menu.nombre" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Cantidad</ion-label>
+      <ion-input [(ngModel)]="menu.cantidad" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Precio</ion-label>
+      <ion-input [(ngModel)]="menu.precio" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descripcion</ion-label>
+      <ion-input [(ngModel)]="menu.descripcion" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Imagen del plato</ion-label>
+      <ion-input [(ngModel)]="menu.img" type="text"></ion-input>
+    </ion-item><br>
+
+    <button (click)="editarMenu()" color="secondary" ion-button block>Terminar edición</button>
+
+  </ion-list>
+  
+  <ion-fab top right edge>
+    <button color="danger" ion-fab mini><ion-icon name="md-construct"></ion-icon></button>
+    <ion-fab-list>
+      <button (click)="borrarMenu()" color="danger" ion-fab><ion-icon name="md-trash"></ion-icon></button>
+      <button (click)="enableEdit()" color="secondary" ion-fab><ion-icon name="create"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+<ion-card *ngIf="edit == false">
+  <img src="{{menu.img}}" />
   <ion-card-content>
-     {{menu.descripcion}}
+    <ion-card-title>
+      {{menu.nombre}}
+    </ion-card-title>
+    <p>
+     Con este plato comen: {{menu.cantidad}} persona(s)
+    </p>
+    <p>${{menu.precio}}</p>
+    <p>{{menu.descripcion}}</p>
   </ion-card-content>
 </ion-card>
-<p>{{id}}</p>
-<p>{{menu.nombre}}</p>
-<p>{{menu.cantidad}}</p>
-<p>{{menu.precio}}</p>
-<p>{{menu.descripcion}}</p>
 </ion-content>
