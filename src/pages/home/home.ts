@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ServicioMenus } from '../../servicios/servicio.menus';
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'page-home',
@@ -9,7 +11,10 @@ import { ServicioMenus } from '../../servicios/servicio.menus';
 export class HomePage {
 menus = [];
 constructor(public navCtrl: NavController, public servicioMenus: ServicioMenus ) {
-  this.menus = servicioMenus.getMenus();
+  servicioMenus.getMenus()
+    .subscribe(menus => {
+      this.menus = menus;
+    });
   }
 
   public goToPageCrear(){

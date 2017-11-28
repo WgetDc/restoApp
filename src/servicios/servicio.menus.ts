@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 
@@ -9,12 +11,18 @@ export class ServicioMenus{
         { id: 3, nombre: "Milcaos", cantidad: 4, precio: 2500, descripcion: "manjar del sur", img:"https://media.betazeta.com/sabrosia/2013/12/milcao.jpg"}
     ];
 
+    constructor(public afDB: AngularFireDatabase) {
+        
+    }
+
     public getMenus(){
-        return this.menus;
+        return this.afDB.list('menus/').valueChanges();
+       // return this.menus;
     }
 
     public createMenu(menu){
-        this.menus.push(menu);
+        this.afDB.database.ref('menus/'+menu.id).set(menu);
+        //this.menus.push(menu);
     }
 
     public getMenu(id){

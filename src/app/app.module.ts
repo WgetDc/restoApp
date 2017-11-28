@@ -9,6 +9,19 @@ import { HomePage } from '../pages/home/home';
 
 import { ServicioMenus } from '../servicios/servicio.menus';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAjGjuP8M7MD0FkNF-kbwNnN_k5ufRO6QM",
+  authDomain: "restoapp-4ca34.firebaseapp.com",
+  databaseURL: "https://restoapp-4ca34.firebaseio.com",
+  storageBucket: "restoapp-4ca34.appspot.com",
+  messagingSenderId: '347109531018'
+};
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -16,7 +29,10 @@ import { ServicioMenus } from '../servicios/servicio.menus';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -27,7 +43,8 @@ import { ServicioMenus } from '../servicios/servicio.menus';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServicioMenus
+    ServicioMenus,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}
